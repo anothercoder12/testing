@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>cron-streamripper</Name>
+    <Repository>dax333/cron-streamripper</Repository>
+    <Registry>https://registry.hub.docker.com/u/dax333/cron-streamripper/</Registry>
+    <Network>bridge</Network>
+    <MyIP/>
+    <Shell>bash</Shell>
+    <Privileged>false</Privileged>
+    <Support>https://forums.unraid.net/topic/79122-support-foxxmd-cron-streamripper</Support>
+    <Project>http://streamripper.sourceforge.net/</Project>
+    <Overview>
+        Streamripper that runs on a cron schedule[br][br]&#xD;
+        [b]Directions:[/b][br]&#xD;
+        1. Create an executable file (sh script) that runs streamripper and store it in the Programs Dir directory[br]&#xD;
+        2. Create a valid cron file named [b]station-cron[/b] in the Cron Dir directory (must be done for the container to run) that runs the file created in 1.&#xD;
+    </Overview>
+    <Beta>False</Beta>
+    <Category>Other: Tools:</Category>
+    <Date>2019-04-01</Date>
+    <WebUI/>
+    <TemplateURL>https://github.com/FoxxMD/unraid-docker-templates/blob/master/foxxmd/cron-streamripper.xml</TemplateURL>
+    <Icon>https://github.com/FoxxMD/unraid-docker-templates/raw/master/antenna.png</Icon>
+    <ExtraParams/>
+    <PostArgs/>
+    <CPUset/>
+    <DonateText/>
+    <DonateLink/>
+    <Description>
+        Streamripper that runs on a cron schedule[br][br]&#xD;
+        [b]Directions:[/b][br]&#xD;
+        1. Create an executable file (sh script) that runs streamripper and store it in the Programs Dir directory[br]&#xD;
+        2. Create a valid cron file named [b]station-cron[/b] in the Cron Dir directory (must be done for the container to run) that runs the file created in 1.&#xD;
+    </Description>
+    <Networking>
+        <Mode>bridge</Mode>
+        <Publish/>
+    </Networking>
+    <Data>
+        <Volume>
+            <HostDir>/mnt/user/appdata/cron-streamripper/cron</HostDir>
+            <ContainerDir>/etc/cron.d</ContainerDir>
+            <Mode>ro</Mode>
+        </Volume>
+        <Volume>
+            <HostDir>/mnt/user/appdata/cron-streamripper/streams</HostDir>
+            <ContainerDir>/home/streamripper/streams</ContainerDir>
+            <Mode>rw</Mode>
+        </Volume>
+        <Volume>
+            <HostDir>/mnt/user/appdata/cron-streamripper/programs</HostDir>
+            <ContainerDir>/home/streamripper/programs</ContainerDir>
+            <Mode>ro</Mode>
+        </Volume>
+    </Data>
+    <Environment/>
+    <Labels/>
+    <Config Name="Cron Dir" Target="/etc/cron.d" Default="/mnt/user/appdata/cron-streamripper/cron" Mode="ro" Description="Directory where cron files are stored" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/cron-streamripper/cron</Config>
+    <Config Name="Streams Dir" Target="/home/streamripper/streams" Default="/mnt/user/appdata/cron-streamripper/streams" Mode="rw" Description="Directory where saved streams are stored" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/cron-streamripper/streams</Config>
+    <Config Name="Programs Dir" Target="/home/streamripper/programs" Default="/mnt/user/appdata/cron-streamripper/programs" Mode="ro" Description="Directory where executable files, run from the station-cron file, are stored" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/cron-streamripper/programs</Config>
+</Container>
